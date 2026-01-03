@@ -9,4 +9,5 @@ import java.util.List;
 public interface TodoListRepository extends JpaRepository<TodoList, Long> {
 
     List<TodoList> findAllByOrderByIdDesc();
+    Boolean existsByTitle(String username);
 }
