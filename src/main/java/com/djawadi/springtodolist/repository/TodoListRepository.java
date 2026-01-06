@@ -2,6 +2,7 @@
 package com.djawadi.springtodolist.repository;
 
 import com.djawadi.springtodolist.entities.TodoList;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

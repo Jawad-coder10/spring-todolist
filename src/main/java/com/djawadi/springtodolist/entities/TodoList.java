@@ -19,12 +19,8 @@ public class TodoList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max = 20)
-    @Column(unique = true)
     private String title;
-    @NotBlank
-    @Size(max = 100)
+
     private String description;
 
     @Column(nullable = false, updatable = false)
@@ -44,7 +40,4 @@ public class TodoList {
     public void onUpdate() {
         this.updatedAt = Instant.now();
     }
-
-
-
 }

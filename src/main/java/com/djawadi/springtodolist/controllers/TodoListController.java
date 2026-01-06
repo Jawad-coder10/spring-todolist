@@ -13,13 +13,23 @@ import java.util.List;
 public class TodoListController {
     @Autowired
     private TodoListService todoListService;
+
+    @GetMapping
     public List<TodoList> getAllTodoLists(@RequestParam(value= "order", required = false) String order) {
         return todoListService.getAllTodoLists(order);
     }
+
+    @PostMapping("/create")
+    public TodoList createTodoList(@RequestBody TodoListReqDto todoListReqDto)
+    {
+        return todoListService.createTodoList(todoListReqDto);
+    }
+
     @GetMapping("/{id}")
     public TodoList getTodoListById(@PathVariable Long id) {
         return todoListService.getTodoListById(id);
     }
+
     @PutMapping("/{id}")
     public TodoList updateTodoList(@PathVariable Long id, @RequestBody TodoListReqDto todoListReqDto) {
         return todoListService.updateTodoList(todoListReqDto, id);

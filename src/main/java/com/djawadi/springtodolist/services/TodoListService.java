@@ -1,7 +1,6 @@
 package com.djawadi.springtodolist.services;
 import com.djawadi.springtodolist.dto.TodoListReqDto;
 import com.djawadi.springtodolist.entities.TodoList;
-import com.djawadi.springtodolist.payload.TodoListRequest;
 import com.djawadi.springtodolist.repository.TodoListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,13 +39,13 @@ public class TodoListService implements TodoListServiceImpl {
     }
 
     @Override
-    public TodoList register(TodoListRequest todoListRequest) {
-        if (todoListRepository.existsByTitle(todoListRequest.getTitle())) {
-            throw new RuntimeException("Error: TodoList is already taken!");
+    public TodoList createTodoList(TodoListReqDto todoListReqDto) {
+        if (todoListRepository.existsByTitle(todoListReqDto.getTitle())) {
+            throw new RuntimeException("Erreur: Ce todoList existe déja !");
         }
         TodoList todoList = TodoList.builder()
-                .title(todoListRequest.getTitle())
-                .description(todoListRequest.getDescription())
+                .title(todoListReqDto.getTitle())
+                .description(todoListReqDto.getDescription())
                 .build();
         return todoListRepository.save(todoList);
     }
