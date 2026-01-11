@@ -2,13 +2,12 @@
 package com.djawadi.springtodolist.repository;
 
 import com.djawadi.springtodolist.entities.TodoList;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface TodoListRepository extends JpaRepository<TodoList, Long> {
-
     List<TodoList> findAllByOrderByIdDesc();
     Boolean existsByTitle(String username);
 }
